@@ -14,16 +14,16 @@ class Student
     # find the student in the database given a name
     # return a new instance of the Student class
   end
-  
+
   def save
     sql = <<-SQL
-      INSERT INTO students (name, grade) 
+      INSERT INTO students (name, grade)
       VALUES (?, ?)
     SQL
 
     DB[:conn].execute(sql, self.name, self.grade)
   end
-  
+
   def self.create_table
     sql = <<-SQL
     CREATE TABLE IF NOT EXISTS students (
@@ -75,7 +75,7 @@ class Student
 
   def self.count_all_students_in_grade_9
     sql = <<-SQL
-      SELECT COUNT(grade) 
+      SELECT COUNT(grade)
       FROM students
       WHERE grade = 9
       SQL
